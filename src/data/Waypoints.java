@@ -59,4 +59,10 @@ public class Waypoints {
       this.alt2 = alt2;
     }
   }
+
+  @Override
+  public String toString() {
+    super.toString();
+    return latitude.lat1 + ", " + longitude.long1+ " ," +altitude.alt1;
+  }
 }

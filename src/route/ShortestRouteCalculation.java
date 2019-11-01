@@ -51,11 +51,12 @@ public class ShortestRouteCalculation {
   //    }
   //  }
 
+
+
   public ArrayList<Waypoints> nearestNeighbour(
       List<Waypoints> items, double startX, double startY) {
     ArrayList<Waypoints> remainingItems = new ArrayList<>(items);
     ArrayList<Waypoints> orderedItems = new ArrayList<>();
-
     while (remainingItems.size() > 1) {
       double x = startX, y = startY;
       if (orderedItems.size() > 0) {
@@ -81,9 +82,18 @@ public class ShortestRouteCalculation {
         orderedItems.add(bestGuess);
         remainingItems.remove(bestGuess);
       }
+
+      if (remainingItems.size() == 0) {
+        break;
+      } else {
+        nearestNeighbour(
+            remainingItems,
+                bestGuess.getLatitude().lat1,
+                bestGuess.getLongitude().long1);
+      }
     }
 
-    orderedItems.add(remainingItems.get(0));
+    orderedItems.addAll(remainingItems);
 
     return orderedItems;
   }
