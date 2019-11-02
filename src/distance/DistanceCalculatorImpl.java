@@ -5,17 +5,17 @@ import data.Waypoints;
 public class DistanceCalculatorImpl implements DistanceCalculator {
 
   @Override
-  public double distanceBetweenEndPoints(Waypoints waypoints) {
+  public double distanceBetweenEndPoints(Waypoints waypoints,double startLat, double startLong, double startAlt) {
     Waypoints.Latitude latitude = waypoints.getLatitude();
     Waypoints.Longitude longitude = waypoints.getLongitude();
     Waypoints.Altitude altitude = waypoints.getAltitude();
 
-    double lat1 = latitude.lat1;
-    double lat2 = latitude.lat2;
-    double lon1 = longitude.long1;
-    double lon2 = longitude.long2;
-    double el1 = altitude.alt1;
-    double el2 = altitude.alt2;
+    double lat1 = startLat;
+    double lat2 = latitude.lat1;
+    double lon1 = startLong;
+    double lon2 = longitude.long1;
+    double el1 = startAlt;
+    double el2 = altitude.alt1;
 
     if ((lat1 == lat2) && (lon1 == lon2)) {
       return 0;
